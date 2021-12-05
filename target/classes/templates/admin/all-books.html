@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="_fragments/commons::head"></head>
+
+
+<body>
+
+<div th:replace="_fragments/commons :: navigation">
+    Navbar
+</div>
+
+<div class="container-fluid">
+    <div class="row m-5">
+        <div class="content col-lg-12 col-sm-12 col-md-12 mx-auto">
+            <div class="about">
+                <h2 class="page-title">Welcome to All Books!</h2>
+                <hr class="text-black-50">
+                <div class="row m-2">
+                    <div id="books_chart" class=" mx-auto col-lg-6 col-sm-6 col-sm-6"></div>
+                    <div id="authors_pie" class=" mx-auto col-lg-6 col-sm-6 col-sm-6"></div>
+                </div>
+                <div class="row m-2">
+                    <div id="years_chart" class=" mx-auto col-lg-12 col-sm-12 col-sm-12 vh-100"></div>
+                </div>
+                <div class="row m-2">
+                    <div id="price_range" class=" mx-auto col-lg-12 col-sm-12 col-sm-12"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div th:replace="_fragments/commons::footer"></div>
+</body>
+</html>

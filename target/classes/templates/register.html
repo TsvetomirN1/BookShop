@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="_fragments/commons::head"></head>
+
+
+<body>
+
+<div th:replace="_fragments/commons :: navigation">
+    Navbar
+</div>
+
+<div class="container-fluid">
+    <div class="row m-5">
+        <div class="col-lg-5 col-sm-12 col-md-12 content mx-auto">
+            <h2 class="text-center">User Registration</h2>
+            <form th:action="@{/register}" th:method="post" th:object="${userRegisterBindingModel}"
+                  class="main-form mx-auto col-md-12 col-sm-12 col-lg-12 form" id="register-form">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <!-- First Row ----------------------------------------------------->
+                        <div class="row p-4">
+                            <!-- First Name Field ---------------------------------------------->
+                            <div class="form-group col-12 p-2">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user fs-2"></i></span>
+                                    </div>
+                                    <input id="firstName"
+                                           th:field="*{firstName}"
+                                           th:errorclass="is-invalid"
+                                           type="text" class="form-control" placeholder="First name" required/>
+
+                                    <small class="invalid-feedback errors alert alert-danger">
+                                        Firstname is required and should be between 4 and 20 symbols.</small>
+                                </div>
+                                <p id="fname-error" class="form-error"></p>
+                            </div>
+                            <!-- Last Name Field ---------------------------------------------->
+                            <div class="form-group col-12 p-2">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user fs-2"></i></span>
+                                    </div>
+                                    <input id="lastName" name="lastName"
+                                           th:field="*{lastName}"
+                                           th:errorclass="is-invalid"
+                                           type="text" class="form-control"
+                                           placeholder="Last name" required/>
+
+                                    <small class="invalid-feedback errors alert alert-danger">
+                                        Lastname is required and should be between 4 and 20 symbols.</small>
+                                </div>
+                                <p id="lname-error" class="form-error"></p>
+                            </div>
+                            <!-- Email Field -------------------------------------------------->
+                            <div class="form-group col-12 p-2">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-at fs-2"></i></span>
+                                    </div>
+                                    <input id="email"
+                                           th:field="*{email}"
+                                           th:errorclass="is-invalid" type="text"
+                                           class="form-control" placeholder="Email" required/>
+                                    <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                           class="invalid-feedback errors alert alert-danger">
+                                        Email is invalid!
+                                    </small>
+                                </div>
+                                <p id="email-error" class="form-error"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- Second Row -------------------------------------------------->
+                        <div class="row p-4">
+
+                            <!-- Username Field --------------------------------------------->
+                            <div class="form-group col-12 p-2">
+                                <div class="input-group col-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user-tag fs-3"></i></span>
+                                    </div>
+                                    <input id="username" name="username"
+                                           th:field="*{username}"
+                                           th:errorclass="is-invalid"
+                                           type="text" class="form-control" placeholder="Username" required/>
+
+
+                                    <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                                           class="invalid-feedback errors alert alert-danger">
+                                        Username must be minimum 3 characters.
+                                    </small>
+                                </div>
+                                <p id="user-error" class="form-error"></p>
+                            </div>
+                            <!-- Password Field -------------------------------------------->
+                            <div class="form-group col-12 p-2">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-lock fs-2"></i></span>
+                                    </div>
+                                    <input id="password" name="password"
+                                           th:field="*{password}"
+                                           th:errorclass="is-invalid"
+                                           type="password"
+                                           class="form-control" placeholder="Password" required/>
+
+                                    <small class="invalid-feedback errors alert alert-danger">
+                                        Password must be minimum 4 characters</small>
+                                </div>
+                                <p id="pass-error" class="form-error"></p>
+                            </div>
+                            <!-- Confirm Password Field ------------------------------------->
+                            <div class="form-group col-12 p-2">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-lock fs-2"></i></span>
+                                    </div>
+                                    <input id="confirmPassword"
+                                           th:field="*{confirmPassword}"
+                                           th:errorclass="is-invalid"
+                                           type="password"
+                                           class="form-control" placeholder="Confirm password" required/>
+                                    <small class="invalid-feedback errors alert alert-danger">
+                                        Confirmation password is required.</small>
+                                </div>
+                                <p id="rpass-error" class="form-error"></p>
+                            </div>
+                        </div>
+<!--                        <div th:if="${userNameOccupied}" class="row">-->
+<!--                            <div class="form-group col-md-12 mb-6">-->
+<!--                                <p class="invalid-feedback errors alert alert-danger">-->
+<!--                                    Username is occupied.-->
+<!--                                </p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+                        <button type="submit" id="register" class="btn col-12 btn-info btn-lg">Create account</button>
+                    </div>
+                </div>
+            </form>
+
+    </div>
+</div>
+</div>
+<div th:replace="_fragments/commons::footer"></div>
+</body>
+</html>

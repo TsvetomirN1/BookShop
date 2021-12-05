@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<head th:replace="_fragments/commons::head"></head>
+
+<body>
+
+<div th:replace="_fragments/commons::navigation"></div>
+
+
+<div class="container-fluid">
+    <div class="row m-5">
+        <div class="content col-lg-7
+         col-md-12 col-sm-12 mx-auto">
+            <h2 class="page-title">Welcome to BookShop</h2>
+            <hr class="text-black-50">
+            <div class=" container-fluid ">
+               <p class="page-subtitle">Here you can find a lot of biography books, history books,
+                    as well books for improvement and for healthy lifestyle </p>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-md-12">
+                <div class="row col-lg-12 p-2">
+                    <div class="col-lg-6 order-1 order-lg-2 align-self d-flex">
+                        <img src="https://www.pngplay.com/wp-content/uploads/6/Books-Transparent-File.png" class="img-thumbnail bg-light"  alt="">
+                    </div>
+                    <div class="col-lg-6">
+                        <h4>You can read our ebooks online, or download them to a vast array of devices, using our Ebook Reader apps.</h4>
+                        <p class="fst-italic">
+                           Get your ebooks now on a different devices.
+                        </p>
+                        <hr>
+                            <p><i class="fas fa-thumbs-up p-2"></i>We provide a range of ebook-specific technical services to book publishers</p>
+                            <p><i class="fas fa-thumbs-up p-2"></i> We sell ebooks direct to consumers via eBooks.com.</p>
+                            <p><i class="fas fa-book p-2"></i> We have our own publisher licenses, delivery platforms, reader apps and repository of titles.</p>
+
+                        <hr>
+                        <p>
+                            It is the only independent ebook retailer that sells into every country in the world, including Antarctica and the International Space Station.
+                            Ebook Reader, our mobile app, is one of the most popular apps in the ebook market, with millions of installs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="_fragments/commons::footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="_fragments/commons::head"></head>
+
+<body>
+
+<div th:replace="_fragments/commons::navigation"></div>
+
+<div class="container-fluid">
+    <div class="row m-5">
+        <div class="content col-lg-12 col-sm-12 col-md-12 mx-auto">
+            <div class="about">
+                <h2 class="page-title">All Books</h2>
+                <div class='row d-flex justify-content-around bg-dark'>
+                    <div class="col-md-12 mr-auto d-flex flex-column">
+                        <fieldset class=" container-fluid" >
+                            <div class="control" >
+                                <div id="book-name" class="filter"></div>
+                                <div id="book-author" class="filter"></div>
+                                <div id="book-year" class="filter "></div>
+                                <div id="book-sold" class="filter "></div>
+
+                            </div>
+                            <div class="control">
+                                <div id="book-genre" class="filter"></div>
+                            </div>
+                        </fieldset>
+                        <div id="all-books"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="_fragments/commons::footer"></footer>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="_fragments/commons::head"></head>
+
+<body>
+
+<div th:replace="_fragments/commons::navigation"></div>
+
+<div class="container-fluid">
+    <div class="row m-5">
+        <div class="content mx-auto">
+            <div class="about">
+                <h2 class="page-title">My Books</h2>
+                <div class='row mb-4 d-flex justify-content-around'>
+                    <div class=" mr-auto d-flex flex-column">
+                        <div id="books"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="_fragments/commons::footer"></footer>
+</body>
+</html>

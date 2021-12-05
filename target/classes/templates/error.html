@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="_fragments/commons::head"></head>
+<body>
+<div th:replace="_fragments/commons::navigation"></div>
+<div class="container-fluid">
+  <div class="row m-5">
+    <div class="content col-lg-12 col-sm-12 col-md-12 mx-auto">
+      <div class="about">
+        <h2 class="page-title">Error !!!</h2>
+        <hr class="text-black-50">
+        <div class=" container-fluid col-md-12">
+          <h1>Oops!</h1>
+          <p>An unexpected error occurred while processing your request.
+            Please check the web address and try again.</p>
+          <a th:href="@{/}"
+             type="button" class="btn btn-info btn-md btn-block w-50 mx-auto my-3">
+            Go to Homepage
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div th:replace="_fragments/commons::footer"></div>
+<script src="/js/customs.js"></script>
+</body>
+</html>

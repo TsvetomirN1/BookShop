@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="_fragments/commons::head"></head>
+
+<body>
+
+<div th:replace="_fragments/commons::navigation"></div>
+
+<div class="container-fluid">
+    <div class="row m-5">
+        <div class="col-lg-8 col-sm-12 col-md-12 content mx-auto">
+            <div class="about">
+                <h2 class="page-title" id="add_book_title">Add Book</h2>
+                <hr class="text-black-50">
+                <div class=" container-fluid col-md-12">
+                    <form th:action="@{/admin/add-book}" th:method="post" th:object="${bookAddBindingModel}"
+                          class="main-form mx-auto col-md-12 col-sm-12 col-lg-12 form">
+                        <div class="row">
+
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="title" class="text-white font-weight-bold">Title</label>
+                                <input id="title"
+                                       th:field="*{title}"
+                                       th:errorclass="is-invalid"
+                                       type="text" class="form-control"
+                                       placeholder="Enter title"/>
+                                <p class="invalid-feedback errors alert alert-info ">
+                                    Title is required.
+                                </p>
+                            </div>
+
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="category" class="text-white font-weight-bold">Category</label>
+                                <input id="category"
+                                       th:field="*{category}"
+                                       th:errorclass="is-invalid"
+                                       type="text" class="form-control"
+                                       placeholder="Enter Category"/>
+                                <p class="invalid-feedback errors alert alert-info">
+                                    Category is required.
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="price" class="text-white font-weight-bold">Price</label>
+                                <input id="price"
+                                       th:field="*{price}"
+                                       th:errorclass="is-invalid"
+                                       type="text" class="form-control"
+                                       placeholder="Enter price"/>
+                                <p class="invalid-feedback errors alert alert-info">
+                                    Price is required.
+                                </p>
+                            </div>
+
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="author" class="text-white font-weight-bold">Author</label>
+                                <input id="author"
+                                       th:field="*{author}"
+                                       th:errorclass="is-invalid"
+                                       type="text" class="form-control"
+                                       placeholder="Enter Author"/>
+                                <p class="invalid-feedback errors alert alert-info">
+                                    Author is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="release_year" class="text-white font-weight-bold">Release Year</label>
+                                <input id="release_year"
+                                       th:field="*{year}"
+                                       th:errorclass="is-invalid"
+                                       type="number" step="1" class="form-control"
+                                       placeholder="Released year"/>
+                                <p class="invalid-feedback errors alert alert-info">
+                                    Released year is required.
+                                </p>
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="imageUrl" class="text-white font-weight-bold">Image URL</label>
+                                <input id="imageUrl"
+                                       th:field="*{image}"
+                                       th:errorclass="is-invalid"
+                                       type="text" class="form-control"
+                                       placeholder="Put book image URL here"/>
+                                <p class="invalid-feedback errors alert alert-info ">
+                                    Book image URL is required.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="text-white font-weight-bold" for="description">Description</label>
+                            <textarea id="description"
+                                      th:field="*{description}"
+                                      th:errorclass="is-invalid"
+                                      type="textarea" class="form-control" rows="3"
+                                      placeholder="Description"></textarea>
+                            <p class="invalid-feedback errors alert alert-info">
+                                Description is required.
+                            </p>
+                        </div>
+
+                        <div class="row p-4 mx-auto">
+
+                                <input type="submit" class="btn btn-info btn-lg" id="add_book" value="Add"/>
+                                <input type="submit" class="btn btn-info btn-lg" style="display:none" id="update_book" value="Update"/>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="_fragments/commons::footer"></footer>
+
+</body>
+</html>

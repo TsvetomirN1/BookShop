@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="_fragments/commons::head"></head>
+
+<body>
+<div th:replace="_fragments/commons::navigation"></div>
+<div class="container-fluid">
+    <div class="row m-5">
+        <div class="content col-lg-12 col-sm-12 col-md-12 mx-auto">
+            <div class="about">
+                <h2 class="page-title">Library</h2>
+                <hr class="text-black-50">
+                <div class="row">
+                    <div class="col-lg-2 col-sm-12 col-md-12">
+                        <div class="list-group">
+                            <a href="#"  class="list-group-item title  list-group-item-action bg-dark disabled text-white fw-bold text-center">
+                                <h5>Categories</h5>
+                            </a>
+                            <div id="categories"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-sm-7 col-md-7">
+                        <div class="row ">
+                            <div class="col-lg-3 col-sm-3 col-md-3" id="category">
+                                <div class="title m-2"><h3>ALL BOOKS</h3></div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-7">
+                                <div class="row d-flex d-inline">
+                                    <div class="input-group rounded">
+                                        <input type="search" id="search_by_title" class="form-control rounded" placeholder="Search" aria-label="Search"
+                                               aria-describedby="search-addon" />
+                                        <span class="input-group-text border-0" id="search-addon"><i class="fas fa-search"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-sm-2 col-md-2" id="pagination">
+                                <ul class="pagination">
+                                    <li class="page-item"><a id="prev-books" class="page-link"><i class="fas fa-chevron-left"></i></i></a></li>
+                                    <li class="page-item active"><a id="current-book" class="page-link" >1</a></li>
+                                    <li class="page-item"><a  id="next-books" class="page-link"><i class="fas fa-chevron-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="message" class="alert-danger text-center"></div>
+                        <div id="books"></div>
+                    </div>
+                    <div class="col-lg-3 shadow-lg">
+                        <div class="swiper-container bg-dark rounded-3 ">
+                            <a href="#"  class="list-group-item title list-group-item-action bg-dark disabled text-white fw-bold text-center">
+                                <h5>Most Popular</h5>
+                            </a>
+                            <div class="swiper-wrapper"></div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-arrows">
+                                <div class="swiper-button-prev"><span></span></div>
+                                <div class="swiper-button-next"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="_fragments/commons::footer"> </footer>
+<script>
+
+    const swiper = new Swiper('.swiper-container', {
+        speed: 500,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        centeredSlides: true,
+        paginationClickable: true,
+        watchSlidesProgress: true,
+        loop: true,
+        slidesPerView: 1,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    // Render Categories -> left menu
+    $.get(CONFIG.PATHS.REST.all_categories).done(categories=>{
+        $("#categories").append(`<a onclick="getByCat('ALL BOOKS', 'ALL BOOKS')" class="list-group-item list-group-item-action btn">ALL BOOKS</a>`)
+        for (let i = 0; i < categories.length; i++) {
+            $("#categories").append(`<a onclick="getByCat('${categories[i].id}', '${categories[i].category}')" class="list-group-item list-group-item-action btn">${categories[i].category}</a>`)
+        }
+    })
+
+    // Render Carousel -> Right side
+    books_carousel(all_books)
+
+
+    // Autocomplete
+    let titles = []
+    for (let i = 0; i < all_books.length; i++) {
+        titles.push(all_books[i].title)
+    }
+    const find_by_title = title => all_books.filter(book => book.title.toLowerCase().startsWith(title.toLowerCase()))
+
+    // Suggestions dropdown below the search field
+    $("#search_by_title").autocomplete({
+        source: filter(titles)
+    })
+
+    // Filter the books based on the typed letters
+    $("#search_by_title").on('keypress', e=> {
+        $("#books").html(' ')
+        books_template(find_by_title($("#search_by_title").val()))
+    })
+
+    // Pagination
+    let url = location.href.replace("#", "?")
+    let cur_page = parseInt(getParam('page', url))
+    let per_page = CONFIG.PAGINATION.books.booksOnPage
+    let max_pages = Math.floor(all_books.length / per_page)
+    let filter_page= isNaN(cur_page) || max_pages < cur_page ? 1: cur_page
+    let offset  = filter_page * per_page
+
+
+    let next = $("#next-books")
+    let prev = $("#prev-books")
+
+    next.on("click", e=>{
+        if(filter_page+1 <= max_pages){
+            filter_page ++;
+            window.location.href = "?page=" + filter_page
+            books_template(all_books.slice(offset - per_page, offset))
+        }
+    })
+
+    prev.on("click", e=>{
+        if(filter_page-1 > 0){
+            filter_page --;
+            window.location.href = "?page=" + filter_page
+            books_template(all_books.slice(offset - per_page, offset))
+        }
+    })
+
+    setInterval(e=>{
+        $("#current-book").html(`<span style="color:#3EFF1E">`+filter_page + `</span> /` + max_pages + "")
+    })
+
+    books_template(all_books.slice(offset - per_page, offset))
+
+
+    // Paging the books
+    $("#search_by_title").on('keypress', e=> {
+        books_template(find_by_title($("#search_by_title").val()))
+    })
+
+    // Filter the books based on the category selected from the left menu
+    function getByCat(catId, catName){
+        let current_books = []
+
+        $("#message").html(' ')
+
+        if (catName ==='ALL BOOKS'){
+            current_books = all_books
+        }
+        else{
+            for (let i = 0; i < all_books.length; i++) {
+                if(all_books[i]['category'] === catName){
+                    current_books.push(all_books[i])
+                }
+            }
+        }
+
+        if (current_books.length === 0){
+            $("#message").html(`We do not have books in the ${catName} category at the moment `)
+            return;
+        }
+
+        $("#category").html(`<div class="title m-2"><h3>${catName}</h3></div>`)
+        localStorage.setItem('books', JSON.stringify(current_books));
+        books_template(current_books)
+    }
+
+
+    function add_wishlist(id){
+        let storage = window.localStorage;
+
+        // Fetch the Books JSON and save the data to the local storage so that no further fetch will be needed
+        $.get(CONFIG.PATHS.REST.all_books).done(books=> {
+            storage.setItem("books", JSON.stringify(books));
+        })
+        let wished_books = JSON.parse(localStorage.getItem("wishlist"))
+        if(!wished_books.includes(id)){
+            wished_books.push(id)
+            localStorage.setItem("wishlist", JSON.stringify(wished_books))
+            format_message(`${all_books[id].title} was successfully added`, 'success')
+            $('#wish-count').html(wished_books.length)
+        }
+        else{
+            format_message(`${all_books[id].title} is in your wishlist already !`, 'danger')
+        }
+    }
+
+</script>
+</body>
+</html>
+

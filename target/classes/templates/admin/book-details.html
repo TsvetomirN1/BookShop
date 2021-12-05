@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/commons::head"></head>
+<body>
+<div th:replace="fragments/commons::navigation"></div>
+<div class="container-fluid">
+    <div class="row m-5">
+        <div class="content col-lg-12 col-sm-12 col-md-12 mx-auto">
+            <div class="about">
+                <h2 class="page-title">Page Title Goes here</h2>
+                <hr class="text-black-50">
+                <div class=" container-fluid col-md-12">
+                    Here is your content
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/commons::footer"></div>
+<script src="/js/customs.js"></script>
+</body>
+</html>

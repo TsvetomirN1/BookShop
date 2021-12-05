@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="_fragments/commons::head"></head>
+
+
+<body>
+
+<div th:replace="_fragments/commons :: navigation">
+  Navbar
+</div>
+
+<div class="container-fluid">
+  <div class="row m-5">
+    <div class="content col-lg-12 col-sm-12 col-md-12 mx-auto">
+      <div class="about">
+        <h2 class="page-title">Welcome to Statistics!</h2>
+        <hr class="text-black-50">
+        <div class="row">
+          <div id="piechart" style="width: 1200px; height: 800px;" class="mx-auto"></div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div th:replace="_fragments/commons::footer"></div>
+</body>
+</html>
+
+<th:block>
+  <script th:inline="javascript">
+
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(pieChart);
+
+    function pieChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Requests', 'Number'],
+        ['Total',    parseInt([[${stats.getTotalRequests()}]])],
+        ['Anonymous',    parseInt([[${stats.getAnonRequests()}]])],
+        ['Authorized',    parseInt([[${stats.getAuthRequests()}]])],
+      ]);
+
+      var options = {
+        is3D: true,
+        title: 'Total Requests',
+        backgroundColor: '#43484A',
+        titleTextStyle: {
+          color: '#CA9678',
+          textShadow:'1px 1px #000',
+          fontSize:20
+        },
+        legend: {
+          textStyle: {
+            color: 'white'
+          }
+        }
+      };
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      chart.draw(data, options);
+    }
+
+  </script>
+</th:block>

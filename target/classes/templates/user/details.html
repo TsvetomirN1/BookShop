@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="_fragments/commons::head"></head>
+<body>
+<div th:replace="_fragments/commons::navigation"></div>
+<div class="container-fluid">
+    <div class="row m-5">
+        <div class="content col-lg-5 col-sm-5 col-md-5 mx-auto">
+            <div class="about">
+                <h2 class="page-title">Edit User</h2>
+                <hr class="text-black-50">
+                <div class="container col-lg-12">
+
+                    <form th:object="${userUpdateBindingModel}"
+                          th:action="@{/user/details}"
+                          th:method="post"
+                          class="main-form mx-auto col-md-12 col-sm-12 col-lg-12 form">
+                        <div class="row">
+
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="username" class="text-white font-weight-bold">User Name</label>
+                                <input id="username"
+
+                                       th:field="*{username}"
+                                       th:errorclass="is-invalid"
+                                       type="text" class="form-control"
+                                       placeholder="Enter Username" required/>
+
+                                <small th:if="${#fields.hasErrors('username')}"
+                                   th:errors="*{username}" class="invalid-feedback errors alert alert-info ">
+                                    Edit UserName
+                                </small>
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="email" class="text-white font-weight-bold">Email</label>
+                                <input id="email"
+                                       th:field="*{email}"
+                                       th:errorclass="is-invalid"
+                                       type="text" class="form-control"
+                                       placeholder="Enter Email"/>
+                                <small  th:if="${#fields.hasErrors('email')}"
+                                    th:errors="*{email}"class="invalid-feedback errors alert alert-info ">
+                                    Enter new Email!
+                                </small>
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="firstname" class="text-white font-weight-bold">First Name</label>
+                                <input id="firstname"
+                                       th:field="*{firstName}"
+                                       th:errorclass="is-invalid"
+                                       type="text" class="form-control"
+                                       placeholder="Enter FirstName" required/>
+                                <p th:if="${#fields.hasErrors('firstName')}"
+                                   th:errors="*{firstName}" class="invalid-feedback errors alert alert-info ">
+                                    Firstname is required and should be between 4 and 20 symbols
+                                </p>
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="lastname" class="text-white font-weight-bold">Last Name</label>
+                                <input id="lastname"
+                                       th:field="*{lastName}"
+                                       th:errorclass="is-invalid"
+                                       type="text" class="form-control"
+                                       placeholder="LastName" required/>
+                                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="invalid-feedback errors alert alert-info ">
+                                    Lastname is required and should be between 4 and 20 symbols
+                                </p>
+                            </div>
+
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="password" class="text-white font-weight-bold">Password</label>
+                                <input id="password"
+                                       th:field="*{password}"
+                                       th:errorclass="is-invalid"
+                                       type="password" class="form-control"
+                                       min="4" max="20"
+                                       placeholder="Password" required/>
+                                <p class="invalid-feedback errors alert alert-info ">
+                                   Edit Your Password
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="submit" class="btn btn-info col-12" value="Edit Profile"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="_fragments/commons::footer"></div>
+<script src="/js/customs.js"></script>
+</body>
+</html>

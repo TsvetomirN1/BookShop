@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="_fragments/commons::head"></head>
+
+
+<body>
+
+<div th:replace="_fragments/commons :: navigation">
+    Navbar
+</div>
+<div class="container-fluid">
+    <div class="row m-5">
+        <div class="col-lg-5 col-sm-12 col-md-12 mx-auto content">
+            <h2 class="text-center">User Login</h2>
+            <form method="post" th:action="@{/login}"
+                  class="main-form mx-auto col-md-12 col-sm-12 col-lg-12 form p-2" id="login-form">
+                <div class="form-row">
+                    <div class="col-md-12 col-lg-12 col-sm-12 p-2">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user fs-2"></i></span>
+                            </div>
+                            <input th:value="${username}" id="username" name="username" type="text" min="2" max="20"
+                                   class="form-control" placeholder="Username" required>
+                        </div>
+                        <p id="user-error" class="form-error"></p>
+                    </div>
+                    <div class="col-md-12 col-lg-12 mb-12 col-sm-12 p-2 ">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key fs-2"></i></span>
+                            </div>
+                            <input th:value="${password}" id="password" name="password" type="password" min="2" max="20"
+                                   class="form-control" placeholder="Password" required>
+                        </div>
+                        <p id="pass-error" class="form-error"></p>
+                    </div>
+                    <div th:if="${bad_credentials}" class="alert alert-danger p-2">
+                        <h5>Invalid username or password.</h5>
+                    </div>
+                    <button type="submit" id="login" disabled class="btn col-12 btn-info btn-lg mt-4">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="_fragments/commons::footer"></div>
+</body>
+
+</html>
