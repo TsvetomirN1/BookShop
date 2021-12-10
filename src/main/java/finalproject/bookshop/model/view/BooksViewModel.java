@@ -30,8 +30,9 @@ public class BooksViewModel {
         return title;
     }
 
-    public void setTitle(String title) {
+    public BooksViewModel setTitle(String title) {
         this.title = title;
+        return this;
     }
 
     public String getDescription() {

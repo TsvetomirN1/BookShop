@@ -1,27 +1,20 @@
-package finalproject.bookshop.web;
+package finalproject.bookshop.web.restControllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import finalproject.bookshop.model.entity.AuthorEntity;
 import finalproject.bookshop.model.entity.UserEntity;
+import finalproject.bookshop.repository.AuthorRepository;
 import finalproject.bookshop.repository.BookRepository;
 import finalproject.bookshop.repository.UserRepository;
-import org.hamcrest.text.MatchesPattern;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDateTime;
 import java.util.List;
-
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WithMockUser("lucho@example.com")
 @SpringBootTest
@@ -35,28 +28,35 @@ class BooksRestControllerTest {
   private BookRepository bookRepository;
 
   @Autowired
-  private UserRepository userRepository;
+  private AuthorRepository authorRepository;
 
   @Autowired
   private ObjectMapper objectMapper;
 
-  private UserEntity testUser;
+
+  private AuthorEntity testAuthor;
 
   @BeforeEach
   void setUp() {
-    testUser = new UserEntity();
-    testUser.setPassword("password");
-    testUser.setUsername("gosho");
-    testUser.setEmail("gosho@example.com");
-    testUser.setFirstName("Gosho");
-    testUser.setLastName("Goshev");
+    testAuthor = new AuthorEntity();
+    testAuthor.setFullName("MATT GREEN");
+    testAuthor.setBooks(List.of());
 
-    testUser = userRepository.save(testUser);
+
+    testAuthor = authorRepository.save(testAuthor);
   }
 
   @AfterEach
   void tearDown() {
-    userRepository.deleteAll();
+    authorRepository.deleteAll();
+    bookRepository.deleteAll();
   }
+
+
+  void testGetBookById() {
+
+
+  }
+
 
 }

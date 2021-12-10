@@ -1,48 +1,337 @@
 const CONFIG =
     {
-    DOMAIN: "127.0.0.1:8080",
-    PATHS:{
-        GENERAL:{
-            login:"/login",
-            registration:"/register",
-            all_books:"/books",
-            library:"/library",
-        },
-        USER:{
-            my_books: "/user/books",
-        },
-        ADMIN:{
-            statistic: "/admin/statistics",
-            all_books: "/admin/all-books",
-            add_book: "/admin/add-book",
-            dashboard: "/admin/dashboard"
-        },
-        REST:{
-            all_books:"/api/books/all",
-            all_categories:"/api/categories/all",
-            all_authors: "/api/authors/all"
+        DOMAIN: "127.0.0.1:8080",
+        PATHS:{
+            GENERAL:{
+                login:"/login",
+                registration:"/register",
+                all_books:"/books",
+                library:"/library",
+            },
+            USER:{
+                my_books: "/user/books",
+            },
+            ADMIN:{
+                statistic: "/admin/statistics",
+                all_books: "/admin/all-books",
+                add_book: "/admin/add-book",
+                dashboard: "/admin/dashboard"
+            },
+            REST:{
+                all_books:"/api/books/all",
+                all_categories:"/api/categories/all",
+                all_authors: "/api/authors/all"
 
+            },
         },
-    },
-    PAGINATION:{
-        books:{
-            showPag: true,
-            booksOnPage: 5,
+        PAGINATION:{
+            books:{
+                showPag: true,
+                booksOnPage: 5,
+            }
+        },
+        VALIDATORS: {
+            LOGIN:{
+                username_length: 3,
+                password_length: 4,
+                letters_regex: /^[A-Za-z]+$/
+            },
+            REGISTER:{
+                email_regex:/^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/,
+                first_name:3,
+                last_name:4
+            },
         }
-    },
-    VALIDATORS: {
-        LOGIN:{
-            username_length: 3,
-            password_length: 4,
-            letters_regex: /^[A-Za-z]+$/
-        },
-        REGISTER:{
-            email_regex:/^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/,
-            first_name:3,
-            last_name:4
-        },
+    }
+
+
+function purchase() {
+    $('#run-card-modal').on('click', e => {
+        let count_price = 0
+        let wishlist = JSON.parse(localStorage.getItem('wishlist'))
+        $('#order_list_wishes').html(' ')
+        for (let i = 0; i < wishlist.length; i++) {
+            count_price += all_books[wishlist[i]].price
+            $('#order_list_wishes').append(
+                `<li>
+                         <figure class="prod_img">
+                             <img src="${all_books[wishlist[i]].image}"  style="width:80px"/>
+                         </figure>
+                         <div class="prod_info">
+                             <div class="name ui-corner-left">${all_books[wishlist[i]].title}</div>
+                             <div class="name text-black-50 m-0" style="font-size: 0.7vw; font-style: italic">${all_books[wishlist[i]].author}</div>
+                             <div class="price">${all_books[wishlist[i]].price}</div>
+                         </div>
+                    </li>`
+            )
+        }
+        $('.total_price').html(`<dt class="text-black-50 text-lg-end text-decoration-underline" style="font-size: 1.2vw">Total</dt><dd>${count_price.toFixed(2)}</dd>`)
+    })
+}
+
+function display_wishes(){
+    let wishlist = JSON.parse(localStorage.getItem('wishlist'))
+    $('#wishlist_table').html(' ')
+    for (let i = 0; i < wishlist.length; i++) {
+        $('#wishlist_table').append(`
+               <tr>
+                   <td class="w-25">
+                       <img src="${all_books[wishlist[i]].image}" style="height:80px" class="img-fluid img-thumbnail" alt="Sheep">
+                   </td>
+                   <td>${all_books[wishlist[i]].title}</td>
+                   <td>${all_books[wishlist[i]].price}</td>
+                   <td class="qty"><input type="text" class="form-control" onchange="calc(this.value, ${all_books[wishlist[i]].price}, ${i})" id="price-single" value="1"></td>
+                   <td><div id="calc-price-${i}">${all_books[wishlist[i]].price}</div></td>
+                   <td>
+                       <a href="#" class="btn btn-danger btn-sm" onclick="remove_wish(${i})">
+                           <i class="fa fa-times"></i>
+                       </a>
+                   </td>
+               </tr>`
+        )
     }
 }
+
+function calc(price, other, i){
+    $('#calc-price-' + i).html((price * other).toFixed(2))
+}
+
+function remove_wish(index){
+    let new_wishes = []
+    let wish = JSON.parse(localStorage.getItem("wishlist"))
+    for (let i = 0; i < wish.length; i++) {
+        if(index === i){
+            continue;
+        }
+        new_wishes.push(wish[i])
+    }
+    localStorage.setItem('wishlist', JSON.stringify(new_wishes))
+    $('#wish-count').html(new_wishes.length)
+    $("#wish-total").html(' ')
+    display_wishes()
+}
+
+
+function wishes(){
+    if(!wishlist){
+        localStorage.setItem('wishlist', JSON.stringify([]))
+    }
+    else{
+        $('#wish-count').html(wishlist.length)
+    }
+
+
+    $('#wish-modal').on('click', e=>{
+        display_wishes()
+    })
+
+    setInterval(e=>{
+        let wish = JSON.parse(localStorage.getItem('wishlist'))
+        let wish_prices = []
+        for (let i = 0; i < wish.length; i++) {
+            wish_prices.push(parseFloat($(`#calc-price-` + i).text()))
+        }
+        if(wish_prices.length > 0){
+            $("#wish-total").html(`Total: ` + (wish_prices.reduce((a,b) => a+b).toFixed(2)))
+        }
+        else{
+            $("#wish-total").html()
+        }
+    })
+}
+
+
+function basket(){
+    const d = document,
+        cShake = document.getElementById("card-shake"),
+        ccForm = d.querySelector(".card-form"),
+        cNumber = d.querySelectorAll(".card-number"),
+        ccNumber = ccForm.querySelector("#card-number"),
+        ccMonth = ccForm.querySelector("#expires-month"),
+        cMonth = d.querySelectorAll(".card__exp-month"),
+        ccYear = ccForm.querySelector("#expires-year"),
+        cYear = d.querySelectorAll(".card__exp-year"),
+        ccCCV = ccForm.querySelector("#card-cvc"),
+        cCCV = d.querySelectorAll(".card__cvc-2"),
+        defaultNumberN = cNumber[0].querySelectorAll(".card__span")[0].innerHTML,
+        defaultNumberM = cMonth[0].querySelectorAll(".card__span")[0].innerHTML,
+        defaultNumberY = cYear[0].querySelectorAll(".card__span")[0].innerHTML,
+        defaultNumberC = cCCV[0].querySelectorAll(".card__span")[0].innerHTML
+
+    payment()
+
+    function payment (ev){
+        ev = ev || window.event
+
+        let cardNumber, cardCCV
+        addEvent(ccNumber, "focus", function (){
+            cShake.classList.add("wrong-entry")
+        })
+        addEvent(ccNumber, "blur", function (){
+            cShake.classList.remove("wrong-entry")
+        })
+
+        addEvent(ccMonth, "focus", function (){
+            cShake.classList.add("wrong-entry")
+        })
+        addEvent(ccMonth, "blur", function (){
+            cShake.classList.remove("wrong-entry")
+        })
+
+        addEvent(ccYear, "focus", function (){
+            cShake.classList.add("wrong-entry")
+        })
+        addEvent(ccYear, "blur", function (){
+            cShake.classList.remove("wrong-entry")
+        })
+
+        addEvent(ccCCV, "focus", function (){
+            cShake.classList.add("wrong-entry")
+        })
+        addEvent(ccCCV, "blur", function (){
+            cShake.classList.remove("wrong-entry")
+        })
+
+        addEvent(ccNumber, "keyup", function (){
+            cardNumber = this.value.replace(/[^0-9\s]/g,'')
+
+            if (!!this.value.match(/[^0-9\s]/g)){
+                this.value = cardNumber
+            }
+            parts = numSplit(cardNumber.replace(/\s/g,''), [4,4,4,4])
+            cardNumber = parts.join(' ')
+            if (cardNumber != this.value){
+                this.value = cardNumber
+            }
+            if (!cardNumber){
+                cardNumber = defaultNumberN
+            }
+
+            syncText(cNumber, cardNumber)
+        })
+
+        addEvent(ccMonth, "keyup", function (){
+            let month = this.value.replace(/[^0-9]/g,'')
+            if (ev.keyCode == 38){
+                if (!month){month = 0}
+                month = parseInt(month)
+                month++
+                if (month < 10){
+                    month = "0"+month
+                }
+            }
+
+            if (ev.keyCode == 40){
+                if (!month){month = 13}
+                month = parseInt(month)
+                month--
+                if (month == 0){ month = 1}
+                if (month < 10){
+                    month = "0"+month
+                }
+            }
+
+            if (parseInt(month) > 12){month = 12}
+            if ( parseInt(month) < 1 && month != 0){month = "01"}
+            if (month == "00"){month = "01"}
+            if (month >= "2" && month <= "9"){
+                month = "0"+month
+            }
+            if (month != this.value){
+                this.value = month
+            }
+            if (!month){
+                month = defaultNumberM
+            }
+
+            syncText(cMonth, month)
+        })
+
+        addEvent(ccYear, "keyup", function (){
+            let currentYear = new Date().getFullYear().toString().substr(2,2),
+                year = this.value.replace(/[^0-9]/g,'')
+            if (ev.keyCode == 38){
+                if (!year){year = currentYear}
+                year = parseInt(year)
+                year++
+                if (year < 10){
+                    year = "0"+year
+                }
+            }
+
+            if (ev.keyCode == 40){
+                if (!year){
+                    year = parseInt(currentYear) + 5
+                }
+                year = parseInt(year)
+                year--
+                if (year < 10){
+                    year = "0"+year
+                }
+            }
+
+            if (year.toString().length == 2 && parseInt(year) < currentYear){
+                year = currentYear
+            }
+            if (year != this.value){
+                this.value = year
+            }
+            if (year > (parseInt(currentYear) + 5)){
+                year = (parseInt(currentYear) + 5)
+                this.value = year
+            }
+            if (!year){
+                year = defaultNumberY
+            }
+
+            syncText(cYear, year)
+        })
+
+        addEvent(ccCCV, "keyup", function (){
+            cardCCV = this.value.replace(/[^0-9\s]/g,'')
+
+            if (cardCCV != this.value){
+                this.value = cardCCV
+            }
+            if (!cardCCV){
+                cardCCV = defaultNumberC
+            }
+
+            syncText(cCCV, cardCCV)
+        })
+    }
+
+    function addEvent (elem, event, func){
+        elem.addEventListener(event, func)
+    }
+
+    function syncText (elCol, text){
+        let collection
+        for (let j=0; j < elCol.length; j++){
+            collection = elCol[j].querySelectorAll(".card__span")
+            if (!collection.length){
+                elCol[j].innerHTML = text
+            } else{
+                for (let i=0; i < collection.length; i++){
+                    collection[i].innerHTML = text
+                }
+            }
+        }
+    }
+
+    function numSplit(number, indexes){
+        let tempArr = number.split(''),
+            parts = []
+        for (var i=0, l = indexes.length; i < l; i++){
+            if (tempArr.length){
+                parts.push(tempArr.splice(0,indexes[i]).join(''))
+            }
+        }
+        return parts;
+    }
+}
+
+
 const books_template =
     (book, hide_buttons = false) => {
         $('#books').html(' ')
@@ -90,19 +379,19 @@ const books_template =
         }
     }
 const books_carousel =
-        books => {
-    for (let i = 0; i < books.length; i++) {
-        $('.swiper-wrapper').append(
-            `<div class="swiper-slide">
+    books => {
+        for (let i = 0; i < books.length; i++) {
+            $('.swiper-wrapper').append(
+                `<div class="swiper-slide">
                  <div class="cards">
                      <div class="card p-2 bg-dark m-2">
                          <img class="img-thumbnail img-fluid"src="${books[i].image}"/>
                      </div>
                 </div>
             </div>`
-        )
+            )
+        }
     }
-}
 
 const getParam =
     (param, location = window.location.search) => (location.match(new RegExp('[?&]' + param + '=([^&]+)')) || [, null])[1];
@@ -172,21 +461,21 @@ switch(get_url){
 
 // Login Module --------------------------------------------------
     case CONFIG.PATHS.GENERAL.login:
-         setInterval(e=>{
-             $('#login').prop("disabled", true);
-             $("#pass-error").html("")
-             $("#user-error").html("")
-             if(!valid_username($("#username").val())){
-                 $("#user-error").html("<h5>Username is required!</h5>")
-             }
-             else if(!valid_password($("#password").val())){
-                 $("#pass-error").html("<h5>Password is required!</h5>")
-             }
-             else{
-                 $('#login').prop("disabled", false);
-             }
-         }, 1)
-         break;
+        setInterval(e=>{
+            $('#login').prop("disabled", true);
+            $("#pass-error").html("")
+            $("#user-error").html("")
+            if(!valid_username($("#username").val())){
+                $("#user-error").html("<h5>Username is required!</h5>")
+            }
+            else if(!valid_password($("#password").val())){
+                $("#pass-error").html("<h5>Password is required!</h5>")
+            }
+            else{
+                $('#login').prop("disabled", false);
+            }
+        }, 1)
+        break;
 
 //************** ADMIN MODULES *******************************************///////
 // Add Books  --------------------------------------------------
@@ -345,7 +634,7 @@ switch(get_url){
             }
         })
     }
-    break;
+        break;
 
 // All Books  --------------------------------------------------a
     case CONFIG.PATHS.ADMIN.all_books:
@@ -378,7 +667,7 @@ switch(get_url){
             }
         }
 
-    years.sort().reverse()
+        years.sort().reverse()
 
     function get_header(title){
         let header = [title]
@@ -500,14 +789,14 @@ switch(get_url){
             bar: { groupWidth: '75%' },
             isStacked: true
         };
-            var chart = new google.visualization.BarChart(document.getElementById("years_chart"));
-            chart.draw(view, options);
+        var chart = new google.visualization.BarChart(document.getElementById("years_chart"));
+        chart.draw(view, options);
     }
         let kos = document.getElementsByTagName('rect')
         for (let i = 0; i < kos.length; i++) {
             kos[i].setAttribute("stroke-width", 50);
         }
-    break;
+        break;
 
 //************** USER MODULES *******************************************///////
 // My Books  --------------------------------------------------
@@ -525,4 +814,3 @@ switch(get_url){
         })
         break;
 }
-

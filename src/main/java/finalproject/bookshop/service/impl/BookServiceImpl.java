@@ -81,7 +81,6 @@ public class BookServiceImpl implements BookService {
     private BookEditBindingModel editBook(BookEntity book) {
         BookEditBindingModel bookEditBindingModel = modelMapper.map(book, BookEditBindingModel.class);
 
-
         bookEditBindingModel.setAuthor(book.getAuthor().getFullName());
         bookEditBindingModel.setImage(book.getImage().getUrl());
         bookEditBindingModel.setCategory(book.getCategory().getCategory());
@@ -105,7 +104,6 @@ public class BookServiceImpl implements BookService {
                 findByName(bookservicemodel.getAuthor());
 
 
-
         bookEntity.setId(bookservicemodel.getId());
         bookEntity.setTitle(bookservicemodel.getTitle());
         bookEntity.setYear(bookservicemodel.getYear());
@@ -116,6 +114,18 @@ public class BookServiceImpl implements BookService {
         bookEntity.setImage(imageService.findByUrl(bookservicemodel.getImage()));
         bookRepository.save(bookEntity);
 
+    }
+
+    @Override
+    public Optional<BooksViewModel> getBookById(Long id) {
+
+        return bookRepository.findById(id)
+                .map(this::asBook);
+    }
+
+    @Override
+    public void deleteBook(Long id) {
+        bookRepository.deleteById(id);
     }
 
     private BooksViewModel asBook(BookEntity book) {

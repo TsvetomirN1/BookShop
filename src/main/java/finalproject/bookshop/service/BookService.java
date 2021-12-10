@@ -4,7 +4,6 @@ import finalproject.bookshop.model.binding.BookEditBindingModel;
 import finalproject.bookshop.model.service.BookServiceModel;
 import finalproject.bookshop.model.view.BooksViewModel;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,5 +16,10 @@ public interface BookService {
     Optional<BookEditBindingModel> findBookByID(Long id);
 
     void updateBook(BookServiceModel bookServiceModel) ;
+
+    Optional<BooksViewModel> getBookById(Long id);
+
+    void deleteBook(Long id);
+
 
 }
