@@ -4,24 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cb709d5-6817-4224-96e2-904d5d318481" name="Changes" comment="fixed some menus position and refactoring">
-      <change afterPath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/security/UserDetailsServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/service/impl/BookServiceImplTest.java" afterDir="false" />
+    <list default="true" id="9cb709d5-6817-4224-96e2-904d5d318481" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/BookControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/DashboardControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/StatsControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/UserLoginControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/UserLoginsControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/UserOrdersControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/UserRegisterControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/restControllers/AuthorRestControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/model/view/BooksViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/model/view/BooksViewModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/repository/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/repository/BookRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/service/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/service/impl/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/service/impl/BookServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/web/restControllers/AuthorRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/web/restControllers/AuthorRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/web/restControllers/BookRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/web/restControllers/BookRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/BooksRestControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/restControllers/BooksRestControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/web/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/web/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/web/UserBooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/web/UserBooksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/web/UserEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/web/UserEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/web/UserOrdersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/finalproject/bookshop/web/UserOrdersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/UserControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/restControllers/BooksRestControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/finalproject/bookshop/web/restControllers/BooksRestControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/customs.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/customs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/_fragments/commons.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/_fragments/commons.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/finalproject/bookshop/model/view/BooksViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/finalproject/bookshop/model/view/BooksViewModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/finalproject/bookshop/service/BookService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/finalproject/bookshop/service/BookService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/finalproject/bookshop/service/impl/BookServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/finalproject/bookshop/service/impl/BookServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/finalproject/bookshop/web/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/finalproject/bookshop/web/BookController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/finalproject/bookshop/web/UserBooksController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/finalproject/bookshop/web/UserBooksController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/finalproject/bookshop/web/UserEditController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/finalproject/bookshop/web/UserEditController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/finalproject/bookshop/web/UserOrdersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/finalproject/bookshop/web/UserOrdersController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/finalproject/bookshop/web/restControllers/BookRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/finalproject/bookshop/web/restControllers/BookRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/finalproject/bookshop/web/BooksRestControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/finalproject/bookshop/web/UserControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/finalproject/bookshop/web/UserControllerTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,84 +113,88 @@
       <recent name="finalproject.bookshop.web.restControllers" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="finalproject.bookshop.web" />
+      <recent name="finalproject.bookshop.web.restControllers" />
       <recent name="finalproject.bookshop.service.impl" />
       <recent name="finalproject.bookshop.security" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BookServiceImplTest.testAddBook">
-    <configuration name="BookServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.BookControllerTest.test_AddBook_SavesNewBookCorrectly">
+    <configuration name="BookControllerTest.test_AddBookInvalidParams_RedirectsToAddForm" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="book-shop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="finalproject.bookshop.service.impl.*" />
+          <option name="PATTERN" value="finalproject.bookshop.web.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="finalproject.bookshop.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="finalproject.bookshop.service.impl.BookServiceImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BookServiceImplTest.testAddBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="book-shop" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="finalproject.bookshop.service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="finalproject.bookshop.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="finalproject.bookshop.service.impl.BookServiceImplTest" />
-      <option name="METHOD_NAME" value="testAddBook" />
+      <option name="PACKAGE_NAME" value="finalproject.bookshop.web" />
+      <option name="MAIN_CLASS_NAME" value="finalproject.bookshop.web.BookControllerTest" />
+      <option name="METHOD_NAME" value="test_AddBookInvalidParams_RedirectsToAddForm" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDetailsServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookControllerTest.test_AddBook_SavesNewBookCorrectly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="book-shop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="finalproject.bookshop.security.*" />
+          <option name="PATTERN" value="finalproject.bookshop.web.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="finalproject.bookshop.security" />
-      <option name="MAIN_CLASS_NAME" value="finalproject.bookshop.security.UserDetailsServiceImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserDetailsServiceImplTest.testUserFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="book-shop" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="finalproject.bookshop.security.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="finalproject.bookshop.security" />
-      <option name="MAIN_CLASS_NAME" value="finalproject.bookshop.security.UserDetailsServiceImplTest" />
-      <option name="METHOD_NAME" value="testUserFound" />
+      <option name="PACKAGE_NAME" value="finalproject.bookshop.web" />
+      <option name="MAIN_CLASS_NAME" value="finalproject.bookshop.web.BookControllerTest" />
+      <option name="METHOD_NAME" value="test_AddBook_SavesNewBookCorrectly" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDetailsServiceImplTest.testUserNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookControllerTest.test_GetAddBookForm_OpensForm" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="book-shop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="finalproject.bookshop.security.*" />
+          <option name="PATTERN" value="finalproject.bookshop.web.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="finalproject.bookshop.security" />
-      <option name="MAIN_CLASS_NAME" value="finalproject.bookshop.security.UserDetailsServiceImplTest" />
-      <option name="METHOD_NAME" value="testUserNotFound" />
+      <option name="PACKAGE_NAME" value="finalproject.bookshop.web" />
+      <option name="MAIN_CLASS_NAME" value="finalproject.bookshop.web.BookControllerTest" />
+      <option name="METHOD_NAME" value="test_GetAddBookForm_OpensForm" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookControllerTest.test_GetBookDetailsInvalidId_Throws" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book-shop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="finalproject.bookshop.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="finalproject.bookshop.web" />
+      <option name="MAIN_CLASS_NAME" value="finalproject.bookshop.web.BookControllerTest" />
+      <option name="METHOD_NAME" value="test_GetBookDetailsInvalidId_Throws" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookControllerTest.test_GetUpdateBookForm_OpensForm" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book-shop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="finalproject.bookshop.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="finalproject.bookshop.web" />
+      <option name="MAIN_CLASS_NAME" value="finalproject.bookshop.web.BookControllerTest" />
+      <option name="METHOD_NAME" value="test_GetUpdateBookForm_OpensForm" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -208,19 +224,19 @@
     </configuration>
     <list>
       <item itemvalue="Spring Boot.BookShopApplication" />
-      <item itemvalue="JUnit.UserDetailsServiceImplTest.testUserNotFound" />
-      <item itemvalue="JUnit.UserDetailsServiceImplTest.testUserFound" />
-      <item itemvalue="JUnit.UserDetailsServiceImplTest" />
-      <item itemvalue="JUnit.BookServiceImplTest" />
-      <item itemvalue="JUnit.BookServiceImplTest.testAddBook" />
+      <item itemvalue="JUnit.BookControllerTest.test_GetAddBookForm_OpensForm" />
+      <item itemvalue="JUnit.BookControllerTest.test_AddBook_SavesNewBookCorrectly" />
+      <item itemvalue="JUnit.BookControllerTest.test_AddBookInvalidParams_RedirectsToAddForm" />
+      <item itemvalue="JUnit.BookControllerTest.test_GetBookDetailsInvalidId_Throws" />
+      <item itemvalue="JUnit.BookControllerTest.test_GetUpdateBookForm_OpensForm" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BookServiceImplTest.testAddBook" />
-        <item itemvalue="JUnit.BookServiceImplTest" />
-        <item itemvalue="JUnit.UserDetailsServiceImplTest" />
-        <item itemvalue="JUnit.UserDetailsServiceImplTest.testUserFound" />
-        <item itemvalue="JUnit.UserDetailsServiceImplTest.testUserNotFound" />
+        <item itemvalue="JUnit.BookControllerTest.test_AddBook_SavesNewBookCorrectly" />
+        <item itemvalue="JUnit.BookControllerTest.test_GetUpdateBookForm_OpensForm" />
+        <item itemvalue="JUnit.BookControllerTest.test_GetBookDetailsInvalidId_Throws" />
+        <item itemvalue="JUnit.BookControllerTest.test_AddBookInvalidParams_RedirectsToAddForm" />
+        <item itemvalue="JUnit.BookControllerTest.test_GetAddBookForm_OpensForm" />
       </list>
     </recent_temporary>
   </component>
@@ -233,7 +249,7 @@
       <option name="presentableId" value="Default" />
       <updated>1638727900701</updated>
       <workItem from="1638727912865" duration="1146000" />
-      <workItem from="1638953776363" duration="13758000" />
+      <workItem from="1638953776363" duration="31598000" />
     </task>
     <task id="LOCAL-00001" summary="fixed some menus position and refactoring">
       <created>1638955472278</created>
@@ -249,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638955621268</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="implement some tests">
+      <created>1639129904174</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1639129904174</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,9 +282,13 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="fixed some menus position and refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed some menus position and refactoring" />
+    <MESSAGE value="implement some tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement some tests" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/BookShop$StatsControllerTest_test_StatisticsPage_LoadsCorrectly.ic" NAME="StatsControllerTest.test_StatisticsPage_LoadsCorrectly Coverage Results" MODIFIED="1639229363867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>finalproject.bookshop.web.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/BookShop$UserDetailsServiceImplTest.ic" NAME="UserDetailsServiceImplTest Coverage Results" MODIFIED="1639043118939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>finalproject.bookshop.security.*</FILTER>
     </SUITE>

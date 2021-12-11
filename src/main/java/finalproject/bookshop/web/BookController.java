@@ -39,6 +39,7 @@ public class BookController {
         return "/admin/all-books";
     }
 
+    @Transactional
     @PostMapping("/admin/add-book")
     public String addBookConfirm(@Valid BookAddBindingModel bookAddBindingModel,
                                  BindingResult bindingResult,

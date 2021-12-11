@@ -32,7 +32,6 @@ public class UserEditController {
         UserUpdateServiceModel userUpdateServiceModel = userService.findById(id);
 
         model.addAttribute("userUpdateBindingModel", modelMapper.map(userUpdateServiceModel, UserUpdateBindingModel.class));
-
         return "/user/details";
     }
 

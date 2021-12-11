@@ -37,14 +37,6 @@ class UserControllerTest {
     userRepository.deleteAll();
   }
 
-  @Test
-  void testOpenRegisterForm() throws Exception {
-    mockMvc.
-        perform(get("/users/register"))
-        .andExpect(status().isOk())
-        .andExpect(view().name("register"));
-  }
-
   private static final String TEST_USER_NAME = "gosho";
   private static final String TEST_USER_EMAIL = "gosho@example.com";
   private static final int TEST_USER_AGE = 12;
@@ -52,16 +44,16 @@ class UserControllerTest {
   @Test
   void testRegisterUser() throws Exception {
     mockMvc.perform(post("/users/register").
-        param("username",TEST_USER_NAME).
-        param("firstName","Gosho").
-        param("lastName","Goshev").
-        param("email",TEST_USER_EMAIL).
-        param("password","12345").
-        param("confirmPassword","12345").
-        with(csrf()).
-        contentType(MediaType.APPLICATION_FORM_URLENCODED)
-    ).
-        andExpect(status().is3xxRedirection());
+                    param("username", TEST_USER_NAME).
+                    param("firstName", "Gosho").
+                    param("lastName", "Goshev").
+                    param("email", TEST_USER_EMAIL).
+                    param("password", "12345").
+                    param("confirmPassword", "12345").
+                    with(csrf()).
+                    contentType(MediaType.APPLICATION_FORM_URLENCODED)
+            ).
+            andExpect(status().is3xxRedirection());
 
     Assertions.assertEquals(1, userRepository.count());
 
@@ -72,9 +64,5 @@ class UserControllerTest {
     UserEntity newlyCreatedUser = newlyCreatedUserOpt.get();
 
 
-
-    Assertions.assertEquals(TEST_USER_AGE, newlyCreatedUser.getEmail());
-    // todo - check the remaining properties
   }
-
 }

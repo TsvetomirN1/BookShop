@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UserOrdersController {
 
     @GetMapping("/user/orders")
-    public String about() {
+    public String getOrders() {
         return "/user/orders";
     }
 }
